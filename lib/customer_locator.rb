@@ -1,32 +1,33 @@
 require 'json'
 require './services/distance_calculator'
+require './services/json_file_reader'
 
 class CustomerLocator
   include DistanceCalculator
+  include JsonFileReader
 
   DEFAULT_FILE_PATH = "./bin/customers.txt"
-  DISTANCE_WITHIN_KM = 100
+  DEFAULT_DISTANCE_KM = 100
 
-  # TODO: changeable distance?
-  # TODO: this should be call?
-  def list_customers(file_path = DEFAULT_FILE_PATH)
-    customer_file = read_file(file_path)
+  attr_accessor :customer_file_path, :distance_within
+
+  def initialize(file_path: DEFAULT_FILE_PATH, distance: DEFAULT_DISTANCE_KM)
+    @customer_file_path = file_path
+    @distance_within = distance
+  end
+
+  def call
+    customer_file = read_file(@customer_file_path)
     customer_json = JSON.parse(customer_file, symbolize_names: true)
-    find_customers_within(DISTANCE_WITHIN_KM, customer_json)
+    unsorted_customers = find_customers_within(@distance_within, customer_json)
+
+    unsorted_customers
+      .map { |customer| { name: customer[:name], id: customer[:user_id] } }
+      .sort_by { |customer| customer[:id] }
   end
 
   private
 
-  # TODO: file name as param / ENV / const
-  # TODO: maybe split out the json fixing?
-  def read_file(file)
-    File
-      .read(file)
-      .gsub("}\n{", "},{")
-      .prepend("[") << "]"
-  end
-
-  # TODO: test this throws error when distance_km is not a number/float
   def find_customers_within(distance_km, customer_json)
     customer_json.select do |customer|
       longitude_rads = convert_to_radians(customer[:longitude].to_f)

@@ -3,8 +3,6 @@ module DistanceCalculator
   DUBLIN_OFFICE_LONGITUDE = -6.257664.freeze
   MEAN_EARTH_RADIUS_KM = 6371.freeze
 
-  # TODO: maybe we should assume we're given floats? & throw sensible error when not
-  #   -> then we can test this error is thrownnnn
   def convert_to_radians(degrees)
     ((degrees * Math::PI) / 180).round(6)
   end
