@@ -1,6 +1,6 @@
 require 'json'
-require './services/distance_calculator'
-require './services/json_file_reader'
+require 'distance_calculator'
+require 'json_file_reader'
 
 class CustomerLocator
   include DistanceCalculator

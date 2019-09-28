@@ -1,4 +1,7 @@
-require './lib/customer_locator'
+$LOAD_PATH.unshift(File.expand_path(".", "lib"))
+$LOAD_PATH.unshift(File.expand_path(".", "services"))
+
+require 'customer_locator'
 
 puts 'Finding customers...'
 
