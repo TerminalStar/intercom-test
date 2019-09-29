@@ -16,6 +16,10 @@ class CustomerLocator
     @distance_within = distance
   end
 
+  # Read file source from path @customer_file_path, find customers who are situated
+  # within @distance_within and return array of these customers sorted by user ID.
+  #
+  # The returned array contains customer objects of the form { name: "string", id: user_id }
   def call
     customer_file = read_file(@customer_file_path)
     customer_json = JSON.parse(customer_file, symbolize_names: true)
