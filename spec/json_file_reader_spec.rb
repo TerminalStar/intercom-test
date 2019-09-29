@@ -1,3 +1,6 @@
+require 'json_file_reader'
+require 'json'
+
 class DummyClass
   include JsonFileReader
 end

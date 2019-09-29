@@ -97,4 +97,6 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  $LOAD_PATH.unshift(File.expand_path(".", "services"))
 end

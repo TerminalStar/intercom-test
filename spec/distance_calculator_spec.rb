@@ -1,3 +1,5 @@
+require 'distance_calculator'
+
 class DummyClass
   include DistanceCalculator
 end
