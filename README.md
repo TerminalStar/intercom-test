@@ -7,7 +7,7 @@ My solution to the given problem:
 MacOS focussed and assumes you already have [Homebew](https://brew.sh/) installed/setup.
 
 1. `git clone` the repo
-2. Install ruby: this project uses [rbenv](https://github.com/rbenv/rbenv), which recommends installing via homebrew (`brew install rbenv`). See the docs for other operating systems.
+2. Install ruby: this project uses [rbenv](https://github.com/rbenv/rbenv), which recommends installing via homebrew (`brew install rbenv`). See the docs for other operating systems. Then run `rbenv install` to install the correct version of ruby.
 3. Install bundler: run `gem install bundler`
 4. Install gems: run `bundle install`
 
