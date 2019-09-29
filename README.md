@@ -16,7 +16,7 @@ Run `ruby bin/find_closest_customers.rb` in your Terminal. The output (a list of
 
 You can change the distance within which customers must be situated (expressed in km) by passing the argument `--distance` with the value to search within. Defaults to 100.
 
-You can also change the file that customer data is read in from, by passing `--filename` and the file's name. Defaults to `/bin/customers.txt`.
+You can also change the file that customer data is read in from, by passing `--filepath` and the file's name. Defaults to `/bin/customers.txt`.
 
 ## Test
 Run `rspec` in the project directory.
